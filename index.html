@@ -1,0 +1,387 @@
+<title>Farid Babayev</title>
+<meta name="description" content="Portfolio of Farid Babayev — data science and analytics.">
+<style>
+  /* ---------- Fonts ---------- */
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  /* ---------- Tokens: light (default / system-light) ---------- */
+  :root {
+    --paper:      #F6F7F5;
+    --surface:    #FFFFFF;
+    --ink:        #16201C;
+    --muted:      #5C6B64;
+    --faint:      #8A968F;
+    --line:       #E2E5E0;
+    --line-soft:  #ECEEEA;
+    --accent:     #0F766E;
+    --accent-ink: #0B5A54;
+    --accent-bg:  #E4F0EE;
+    --todo-bg:    #FBEED9;
+    --todo-ink:   #8A6314;
+    --shadow:     0 1px 2px rgba(20,32,28,.04), 0 8px 24px rgba(20,32,28,.05);
+
+    --display: "Fraunces", Georgia, "Times New Roman", serif;
+    --body:    "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    --mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    --measure: 46rem;
+  }
+
+  /* ---------- Tokens: dark ---------- */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #0E1512;
+      --surface:    #141D19;
+      --ink:        #E9EDE9;
+      --muted:      #9DAAA3;
+      --faint:      #6E7C75;
+      --line:       #26312C;
+      --line-soft:  #1D2622;
+      --accent:     #4FD1C5;
+      --accent-ink: #7EE0D7;
+      --accent-bg:  #16302C;
+      --todo-bg:    #33280F;
+      --todo-ink:   #E7C583;
+      --shadow:     0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:      #0E1512;
+    --surface:    #141D19;
+    --ink:        #E9EDE9;
+    --muted:      #9DAAA3;
+    --faint:      #6E7C75;
+    --line:       #26312C;
+    --line-soft:  #1D2622;
+    --accent:     #4FD1C5;
+    --accent-ink: #7EE0D7;
+    --accent-bg:  #16302C;
+    --todo-bg:    #33280F;
+    --todo-ink:   #E7C583;
+    --shadow:     0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+  }
+
+  /* ---------- Base ---------- */
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+  a { color: var(--accent-ink); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: var(--measure); margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .nav-in {
+    max-width: var(--measure); margin: 0 auto; padding: .75rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  }
+  .nav-name { font-family: var(--mono); font-size: .8rem; letter-spacing: .04em; font-weight: 500; color: var(--ink); }
+  .nav-links { display: flex; align-items: center; gap: 1.25rem; }
+  .nav-links a { font-family: var(--mono); font-size: .78rem; color: var(--muted); letter-spacing: .02em; }
+  .nav-links a:hover { color: var(--accent-ink); text-decoration: none; }
+  @media (max-width: 620px){ .nav-links a:not(.theme-toggle){ display:none; } }
+  .theme-toggle {
+    cursor: pointer; background: none; border: 1px solid var(--line);
+    color: var(--muted); border-radius: 999px; width: 30px; height: 30px;
+    display: grid; place-items: center; font-size: .9rem; line-height: 1;
+  }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent-ink); }
+
+  /* ---------- Section scaffolding ---------- */
+  section { padding: 3.25rem 0; border-top: 1px solid var(--line-soft); }
+  section:first-of-type { border-top: none; }
+  .eyebrow {
+    font-family: var(--mono); font-size: .72rem; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 1.4rem;
+  }
+  h2 {
+    font-family: var(--display); font-weight: 500; font-size: 1.75rem;
+    line-height: 1.15; margin: 0 0 1.1rem; text-wrap: balance;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 4rem 0 3.25rem; }
+  .hero .tag { font-family: var(--mono); font-size: .8rem; letter-spacing: .04em; color: var(--muted); margin: 0 0 1rem; }
+  .hero h1 {
+    font-family: var(--display); font-weight: 600; font-size: clamp(2.5rem, 7vw, 3.75rem);
+    line-height: 1.02; letter-spacing: -.01em; margin: 0 0 1.1rem; text-wrap: balance;
+  }
+  .hero .lede { font-size: 1.2rem; line-height: 1.55; color: var(--ink); margin: 0 0 1.6rem; max-width: 38rem; }
+  .hero .lede b { font-weight: 600; color: var(--accent-ink); }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem .9rem; font-family: var(--mono); font-size: .8rem; color: var(--muted); margin-bottom: 1.75rem; }
+  .meta span { display: inline-flex; align-items: center; gap: .4rem; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: .7rem; }
+  .btn {
+    font-family: var(--mono); font-size: .82rem; letter-spacing: .02em;
+    padding: .6rem 1.05rem; border-radius: 8px; border: 1px solid var(--line);
+    color: var(--ink); background: var(--surface); display: inline-flex; align-items: center; gap: .5rem;
+    transition: border-color .15s, color .15s, transform .05s;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent-ink); text-decoration: none; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  :root[data-theme="dark"] .btn.primary,
+  :root:not([data-theme="light"]) .btn.primary { color: #06201D; }
+  @media (prefers-color-scheme: light){ :root:not([data-theme="dark"]) .btn.primary{ color:#fff; } }
+  .btn.primary:hover { filter: brightness(1.06); color: #fff; }
+  :root[data-theme="dark"] .btn.primary:hover { color:#06201D; }
+
+  /* ---------- About ---------- */
+  .about p { margin: 0 0 1rem; max-width: var(--measure); }
+  .about p:last-child { margin-bottom: 0; }
+
+  /* ---------- Projects ---------- */
+  .project { padding: 1.6rem 0; border-top: 1px dashed var(--line); }
+  .project:first-of-type { border-top: none; padding-top: 0; }
+  .project-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .project h3 { font-family: var(--display); font-weight: 600; font-size: 1.28rem; margin: 0; }
+  .project .year { font-family: var(--mono); font-size: .78rem; color: var(--faint); white-space: nowrap; }
+  .project .role { font-family: var(--mono); font-size: .76rem; color: var(--accent); margin: .35rem 0 .9rem; letter-spacing: .02em; }
+  .par { display: grid; grid-template-columns: 5.5rem 1fr; gap: .3rem 1rem; margin: .55rem 0; }
+  .par dt { font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); padding-top: .18rem; }
+  .par dd { margin: 0; }
+  @media (max-width: 540px){ .par { grid-template-columns: 1fr; gap: .1rem; } .par dt { padding-top: .5rem; } }
+  .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+  .tag-chip { font-family: var(--mono); font-size: .72rem; color: var(--muted); background: var(--accent-bg); border-radius: 6px; padding: .2rem .55rem; }
+  .proj-links { margin-top: .9rem; display: flex; gap: 1.1rem; font-family: var(--mono); font-size: .78rem; }
+
+  /* ---------- Experience ---------- */
+  .xp { display: grid; grid-template-columns: 8rem 1fr; gap: .3rem 1.5rem; padding: 1.2rem 0; border-top: 1px solid var(--line-soft); }
+  .xp:first-of-type { border-top: none; }
+  .xp .when { font-family: var(--mono); font-size: .78rem; color: var(--faint); padding-top: .15rem; }
+  .xp h3 { margin: 0; font-size: 1.05rem; font-weight: 600; }
+  .xp .org { color: var(--accent-ink); font-weight: 500; }
+  .xp p { margin: .4rem 0 0; color: var(--muted); font-size: .96rem; }
+  @media (max-width: 540px){ .xp { grid-template-columns: 1fr; gap: .15rem; } .xp .when { order: 2; } }
+
+  /* ---------- Skills ---------- */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.5rem; }
+  .skill-group h4 { font-family: var(--mono); font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0 0 .6rem; }
+  .skill-group ul { margin: 0; padding: 0; list-style: none; }
+  .skill-group li { padding: .18rem 0; color: var(--ink); font-size: .95rem; }
+
+  /* ---------- Contact ---------- */
+  .contact .lede { font-size: 1.15rem; max-width: 34rem; margin: 0 0 1.4rem; }
+
+  footer { padding: 2.5rem 0 3rem; border-top: 1px solid var(--line-soft); font-family: var(--mono); font-size: .74rem; color: var(--faint); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+
+  /* ---------- Placeholder marker ---------- */
+  .todo {
+    font-family: var(--mono); font-size: .72rem; background: var(--todo-bg); color: var(--todo-ink);
+    padding: .05rem .4rem; border-radius: 4px; letter-spacing: .02em; white-space: nowrap;
+  }
+</style>
+
+<nav>
+  <div class="nav-in">
+    <span class="nav-name">Farid Babayev</span>
+    <div class="nav-links">
+      <a href="#about">about</a>
+      <a href="#education">education</a>
+      <a href="#projects">projects</a>
+      <a href="#experience">experience</a>
+      <a href="#skills">skills</a>
+      <a href="#contact">contact</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">◐</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="tag">Data Science · Analytics · Operations Research</p>
+    <h1>Farid Babayev</h1>
+    <p class="lede">Data science master's student turning messy questions into <b>defensible answers</b> — with a quantitative edge in optimization and operations research.</p>
+    <div class="meta">
+      <span>◉ Aachen, Germany</span>
+      <span>◇ MSc Data Analytics &amp; Decision Science</span>
+      <span>⇄ Open to analytics roles &amp; PhD (USA)</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn primary" href="#projects">View projects</a>
+      <a class="btn" href="mailto:faridbabayev.engineering@yahoo.com">Email me</a>
+      <a class="btn" href="https://github.com/faridbabayev999" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/farid-babayev-engineering" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="about" class="about">
+    <div class="wrap">
+      <p class="eyebrow">About</p>
+      <h2>Quantitative by training, practical by instinct.</h2>
+      <p>I'm a master's student in data science based in Baku, with academic work rooted in optimization and operations research. I like problems that sit between rigorous method and real decisions — the kind where the model has to survive contact with messy data and still say something useful.</p>
+      <p>My background spans choice modeling, assortment and pricing optimization, and the everyday analytics toolkit — SQL, Python, and clear visual communication. I'm currently keeping two doors open: applied analytics roles, and a PhD in the USA.</p>
+      <p><span class="todo">edit</span> Add a sentence or two in your own voice — what you're excited about, what you want to work on next.</p>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <p class="eyebrow">Education</p>
+      <h2>Education</h2>
+
+      <div class="xp">
+        <div class="when">10/2025 – Present</div>
+        <div>
+          <h3>MSc, Data Analytics &amp; Decision Science</h3>
+          <p><span class="org">RWTH Aachen Business School</span> · Aachen, Germany</p>
+        </div>
+      </div>
+
+      <div class="xp">
+        <div class="when">09/2019 – 06/2024</div>
+        <div>
+          <h3>BEng, Petroleum Engineering</h3>
+          <p><span class="org">Baku Higher Oil School</span> · Baku, Azerbaijan</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <p class="eyebrow">Selected work</p>
+      <h2>Projects</h2>
+
+      <article class="project">
+        <div class="project-head">
+          <h3>Automated Pricing &amp; Market Analysis for Vintage Watch Parts</h3>
+          <span class="year">2026</span>
+        </div>
+        <p class="role">MSc Analytics Project, RWTH Aachen · Team of 3 · My focus: historical-data scraping and the TMV &amp; turnover models</p>
+        <dl class="par">
+          <dt>Problem</dt><dd>Vintage watch spare parts are hard to value: exact comparable sales are rare, marketplace listings are inconsistent, and asking prices rarely match what items actually sell for — so simple average-price approaches break down.</dd>
+          <dt>Approach</dt><dd>Built an evidence-aware pricing pipeline that produces <em>explainable</em> Target Market Value (TMV) and selling-horizon estimates. The guiding principle — "retrieval is broad, but valuation evidence is strict": a five-tier eBay search gathers candidate listings, then a deterministic matching and confidence layer decides which evidence is trustworthy enough to drive a price. Historical sold data is preferred with recency weighting; when evidence is too weak, the system deliberately declines to price. Backed by a DuckDB warehouse and a 716-test suite.</dd>
+          <dt>Result</dt><dd>Evaluated <strong>728 inventory items</strong> → <strong>575 priced</strong> (239 on historical sales, 336 on active-market fallback) and 153 intentionally left unpriced where evidence was insufficient; a ~<strong>€186k</strong> priced portfolio, delivered through a custom HTML/JS dashboard and an Excel evaluation for the client.</dd>
+        </dl>
+        <div class="tags">
+          <span class="tag-chip">Python</span><span class="tag-chip">DuckDB</span><span class="tag-chip">pandas</span><span class="tag-chip">eBay API</span><span class="tag-chip">Entity matching</span><span class="tag-chip">Robust statistics</span><span class="tag-chip">pytest</span><span class="tag-chip">Dashboard</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/faridbabayev999/vintage-watch-parts-analytics" target="_blank" rel="noopener">GitHub repo →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-head">
+          <h3>Bankruptcy Prediction from Financial Ratios</h3>
+          <span class="year">2026</span>
+        </div>
+        <p class="role">Machine Learning course project, RWTH Aachen · Team of 4</p>
+        <dl class="par">
+          <dt>Problem</dt><dd>Predict whether a company will go bankrupt from 95 financial ratios — on a severely imbalanced dataset where only ~3% of companies actually fail, so raw accuracy is misleading.</dd>
+          <dt>Approach</dt><dd>Full ML workflow on the UCI Taiwanese Bankruptcy dataset (6,819 companies): EDA, class-imbalance handling (careful to avoid data leakage), and model selection via stratified K-fold cross-validation with GridSearchCV — comparing Logistic Regression, SVM, KNN, Random Forest, and LDA.</dd>
+          <dt>Result</dt><dd>Evaluated with imbalance-appropriate metrics — F1-score, Recall, and ROC-AUC — with the metric choice explicitly motivated by the ~3% base rate rather than defaulting to accuracy.</dd>
+        </dl>
+        <div class="tags">
+          <span class="tag-chip">Python</span><span class="tag-chip">scikit-learn</span><span class="tag-chip">Classification</span><span class="tag-chip">Imbalanced data</span><span class="tag-chip">Cross-validation</span><span class="tag-chip">Jupyter</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/faridbabayev999/bankruptcy-prediction-ml" target="_blank" rel="noopener">GitHub repo →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <p class="eyebrow">Experience</p>
+      <h2>Where I've applied it</h2>
+
+      <div class="xp">
+        <div class="when">11/2023 – 09/2025</div>
+        <div>
+          <h3>General Manager — <span class="org">Zimmer Boutique Hotel</span></h3>
+          <p>Built monthly financial reports in Excel, consolidating reservation revenue, operating costs, rent, and third-party booking-platform commissions to compute net profitability. Tracked and analysed reservation data across multiple booking channels to monitor occupancy trends and revenue performance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <p class="eyebrow">Toolkit</p>
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>Programming &amp; Tools</h4>
+          <ul><li>Python</li><li>pandas</li><li>Microsoft Excel</li><li>Power BI</li><li>MS Office</li></ul>
+        </div>
+        <div class="skill-group">
+          <h4>Analysis &amp; Modeling</h4>
+          <ul><li>Exploratory data analysis (EDA)</li><li>Statistics</li><li>Classification (LogReg, SVM, KNN, Random Forest, LDA)</li><li>Cross-validation &amp; tuning</li><li>Class-imbalance handling</li></ul>
+        </div>
+        <div class="skill-group">
+          <h4>Visualization</h4>
+          <ul><li>Matplotlib</li><li>Seaborn</li><li>Power BI dashboards</li></ul>
+        </div>
+        <div class="skill-group">
+          <h4>Languages</h4>
+          <ul><li>Azerbaijani — native</li><li>English — fluent (IELTS 7.0)</li><li>Turkish — fluent</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2>Let's talk.</h2>
+      <p class="lede">Open to analytics roles, internships, and PhD conversations. The fastest way to reach me is email.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="mailto:faridbabayev.engineering@yahoo.com">faridbabayev.engineering@yahoo.com</a>
+        <a class="btn" href="https://github.com/faridbabayev999" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/farid-babayev-engineering" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="#" data-link="cv">Download CV <span class="todo">add link</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Farid Babayev</span>
+    <span>Built with care · Baku ⇄ Aachen</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('themeToggle');
+    var stored;
+    try { stored = localStorage.getItem('theme'); } catch (e) {}
+    if (stored === 'dark' || stored === 'light') root.setAttribute('data-theme', stored);
+    function current() {
+      var t = root.getAttribute('data-theme');
+      if (t) return t;
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    btn.addEventListener('click', function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+  })();
+</script>
