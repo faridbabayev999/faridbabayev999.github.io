@@ -321,6 +321,26 @@
           <a href="https://faridbabayev999.github.io/nvidia-analysis-workbook.xlsx" target="_blank" rel="noopener">Analysis workbook (Excel) →</a>
         </div>
       </article>
+
+      <article class="project">
+        <div class="project-head">
+          <h3>MNL Assortment Optimization — Three Reformulations</h3>
+          <span class="year">2026</span>
+        </div>
+        <p class="role">Operations Research project, RWTH Aachen · Solo</p>
+        <dl class="par">
+          <dt>Problem</dt><dd>Which set of at most <em>c</em> products should a firm offer to maximize expected revenue, when customers across <em>L</em> segments choose by a multinomial-logit rule? This capacitated latent-class MNL assortment problem is NP-hard — the choice probability depends fractionally on the offer set.</dd>
+          <dt>Approach</dt><dd>Implemented and benchmarked three published reformulations plus a baseline in <strong>GAMSPy + CPLEX</strong> (Şen conic, Şen conic + McCormick, Méndez-Díaz, Haase tight). Proved the relaxation-strength ordering and that Haase's switching coefficient is the tightest a valid constraint of that form can have; measured solve time, branch-and-bound nodes, and optimality gap up to |N| = 200.</dd>
+          <dt>Result</dt><dd>All formulations are exact and agree on the optimum. <strong>CONIC+MC collapses the root gap to ≈0% and solves at the root</strong> — ~7 s vs ~110–133 s for the MILPs at |N| = 200. Overall winner: CONIC+MC; Haase tight fastest among the pure linear models.</dd>
+        </dl>
+        <div class="tags">
+          <span class="tag-chip">Operations research</span><span class="tag-chip">MILP / MIQCP</span><span class="tag-chip">GAMSPy</span><span class="tag-chip">CPLEX</span><span class="tag-chip">Choice models (MNL)</span><span class="tag-chip">Benchmarking</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/faridbabayev999/mnl-assortment-optimization" target="_blank" rel="noopener">GitHub repo →</a>
+          <a href="https://github.com/faridbabayev999/mnl-assortment-optimization/blob/main/MNL_reformulations_report.pdf" target="_blank" rel="noopener">Read the report (PDF) →</a>
+        </div>
+      </article>
     </div>
   </section>
 
